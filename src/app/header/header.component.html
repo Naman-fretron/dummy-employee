@@ -1,0 +1,19 @@
+<div class="header-content">
+    <div style="display: flex; align-items: center;">
+        <div style="margin-left: 1rem">
+            <span style="min-width: 1rem; cursor: pointer" (click)="sidenavToggle()">
+                <div *ngIf="isExpand">
+                    <mat-icon style="font-size: 30px; margin-right: 10px;">first_page</mat-icon>
+                </div>
+                <div *ngIf="!isExpand">
+                    <mat-icon style="font-size: 30px; margin-right: 10px;">last_page</mat-icon>
+                </div>
+            </span>
+        </div>
+        <div>Dummy Employee</div>
+    </div>
+    <div style="margin-right: 10px;">
+        <mat-icon>account_circle</mat-icon>
+    </div>
+
+</div>

@@ -1,0 +1,98 @@
+<div style="margin: 10px;">
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <button (click)="addEmployee()" mat-stroked-button color="primary">Add Employee</button>
+        </div>
+        <div class="employee-search">
+            <input
+            #search
+            type="text"
+            class="search"
+            [(ngModel)]="searchKey"
+            size="30"
+            (keyup)="searchFunc($event)"
+            placeholder="Search Employee by Name"
+          />
+          <button *ngIf="!searchKey" mat-icon-button class="employeeSearchIcon">
+            <mat-icon class="icons">search</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            *ngIf="searchKey"
+            aria-label="Clear"
+            class="employeeSearchIcon"
+            (click)="clear()"
+          >
+            <mat-icon class="icons">clear</mat-icon>
+          </button>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; overflow: auto; height: 485px;">
+      <div>
+        <table *ngIf="employee$ | async as employeeData">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Salary</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hoverEffect" *ngFor="let employee of employeeData" >
+              <td matTooltip="{{employee.employee_name}}" (click)="employeeDetail(employee.id)">{{employee.employee_name}}</td>
+              <td (click)="employeeDetail(employee.id)">{{employee.employee_salary}}</td>
+              <td (click)="employeeDetail(employee.id)">{{employee.employee_age}}</td>
+              <td class="hover-block">
+                <span style="margin-left: auto;">
+                  <mat-icon class="edit-img-icon" (click)="editDialog(employee)">edit</mat-icon>
+                  <mat-icon class="edit-img-icon" style="margin-left: 10px" (click)="deleteDialog(employee.id)">delete</mat-icon>
+              </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <!-- <div style="margin-top: 40px;">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Salary</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hoverEffect">
+              <td>employee.employee_name</td>
+              <td>employee.employee_salary</td>
+              <td>employee.employee_age</td>
+              <td class="hover-block">
+                <span >
+                  <mat-icon class="edit-icon" (click)="editDialog()">edit</mat-icon>
+                  <mat-icon class="edit-icon" style="margin-left: 10px" (click)="deleteDialog()">delete</mat-icon>
+              </span>
+              </td>
+            </tr>
+
+            <tr class="hoverEffect">
+              <td>employee.employee_name</td>
+              <td>employee.employee_salary</td>
+              <td>employee.employee_age</td>
+              <td class="hover-block">
+                <span >
+                  <mat-icon class="edit-icon" (click)="editDialog()">edit</mat-icon>
+                  <mat-icon class="edit-icon" style="margin-left: 10px" (click)="deleteDialog()">delete</mat-icon>
+              </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> -->
+</div>

@@ -1,0 +1,13 @@
+<div class="delete-employee-dialog">
+    <div class="delete-employee-block">
+      <div class="delete-employee">Delete Employee</div>
+      <mat-icon class="clear-icon" (click)="dialogClose()">clear</mat-icon>
+    </div>
+    <div mat-dialog-content>
+      <span>Are you sure you want to delete Employee ?</span>
+    </div>
+    <div mat-dialog-actions class="edit-button">
+      <button mat-button (click)="dialogClose()">Cancel</button>
+      <button mat-button (click)="deleteEmployee()">Delete</button>
+    </div>
+  </div>

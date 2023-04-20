@@ -1,0 +1,47 @@
+<div class="add-employee-icon">
+    <div class="add-employee-block">
+        <span *ngIf="data?.action == 'add'" style="margin-left: 0.5rem; font-size: 18px">Add Employee Details</span>
+        <span *ngIf="data?.action == 'edit'" style="margin-left: 0.5rem; font-size: 18px">Update
+            Employee Details</span>
+        <button mat-icon-button mat-dialog-close class="close-btn">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div>
+        <div style="width: 400px;
+        margin: 10px">
+            <form class="form" #employeeForm="ngForm">
+                <mat-form-field appearance="outline" style="margin-bottom: 10px">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput trim #name="ngModel" name="name" autocomplete="off"
+                        [(ngModel)]="employee.employee_name" required />
+                    <mat-hint *ngIf="(name.touched || employeeForm.submitted) && name.errors?.['required']"
+                        align="start" style="color: red">Name is required</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" style="margin-bottom: 10px">
+                    <mat-label>Age</mat-label>
+                    <input type="number" matInput trim #age="ngModel" name="age" autocomplete="off"
+                        [(ngModel)]="employee.employee_age" required />
+                    <mat-hint *ngIf="(age.touched || employeeForm.submitted) && age.errors?.['required']" align="start"
+                        style="color: red">Age is required</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" style="margin-bottom: 10px">
+                    <mat-label>Salary</mat-label>
+                    <input type="number" matInput trim #salary="ngModel" name="salary" autocomplete="off"
+                        [(ngModel)]="employee.employee_salary" required />
+                    <mat-hint *ngIf="(salary.touched || employeeForm.submitted) && salary.errors?.['required']"
+                        align="start" style="color: red">Salary is required</mat-hint>
+                </mat-form-field>
+
+                <div *ngIf="data?.action == 'add'" class="form-group">
+                    <button [style.cursor]="employeeForm.valid ? 'pointer' : 'not-allowed'" color="primary" mat-raised-button type="submit" (click)="addEmployee()" class="btn btn-success">Add</button>
+                </div>
+                <div *ngIf="data?.action == 'edit'" class="form-group">
+                    <button [style.cursor]="employeeForm.valid ? 'pointer' : 'not-allowed'" mat-raised-button color="primary" type="submit" (click)="updateEmployee()" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
