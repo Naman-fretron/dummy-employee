@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "employee_age": 124,
+      "employee_age": 12,
       "employee_name": "Naman Agrawal",
       "employee_salary": 320800,
       "id": 1
@@ -20,7 +20,7 @@
     },
     {
       "employee_age": 60,
-      "employee_name": "Tiger ",
+      "employee_name": "Tiger",
       "employee_salary": 300888,
       "id": 5
     },
@@ -41,6 +41,18 @@
       "employee_age": 3,
       "employee_salary": 3232,
       "id": 9
+    },
+    {
+      "employee_name": "MIke",
+      "employee_age": 33,
+      "employee_salary": 333,
+      "id": 10
+    },
+    {
+      "employee_name": "Ritik",
+      "employee_age": 12,
+      "employee_salary": 3131,
+      "id": 11
     }
   ]
 }

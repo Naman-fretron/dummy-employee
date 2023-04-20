@@ -1,6 +1,6 @@
 import { Conditional } from "@angular/compiler"
 import { createReducer, on } from "@ngrx/store"
-import { addEmployeeSuccess, deleteEmployeeSuccess, loadEmployeeSuccess, setError, updateEmployeeSuccess } from "../actions/employee.action"
+import { addEmployeeSuccess, deleteEmployeeSuccess, loadEmployeeSuccess, searchActionSuccess, setError, updateEmployeeSuccess } from "../actions/employee.action"
 import { initailState } from "./employee.state"
 
 const _employeeReducer = createReducer(
@@ -39,6 +39,14 @@ const _employeeReducer = createReducer(
         return {
             ...state,
             employee: [...state.employee, updatedEmployeeData]
+        }
+    }),
+
+    on(searchActionSuccess, (state:any, action:any) => {
+        console.log(action.employee)
+        return {
+            ...state.employee,
+            employee: action.employee
         }
     }),
 

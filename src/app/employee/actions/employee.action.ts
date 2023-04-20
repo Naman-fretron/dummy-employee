@@ -31,3 +31,10 @@ export const delete_Employee_Success = '[employee-page] deleteEmployeeSuccess'
 
 export const deleteEmployee = createAction(delete_Employee, props<{id : string}>())
 export const deleteEmployeeSuccess = createAction(delete_Employee_Success, props<{id : string}>())
+
+export const search_Action = '[employee-page] searchAction'
+export const search_Action_Success = '[employee-page] searchActionSuccess'
+
+export const searchAction = createAction(search_Action, props<{value: object}>())
+export const searchActionSuccess = createAction(search_Action_Success, props<{employee: EmployeeModal}>())
+

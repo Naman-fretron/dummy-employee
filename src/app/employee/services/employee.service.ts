@@ -38,7 +38,6 @@ export class EmployeeService {
     }
 
     filterEmploye(payload:any){
-        console.log(payload)
         return this.http.get(`http://localhost:3000/data?`, {params: payload})
     }
   

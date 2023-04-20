@@ -1,7 +1,7 @@
 <div style="margin: 10px;">
     <div style="display: flex; justify-content: space-between;">
         <div>
-            <button (click)="addEmployee()" mat-stroked-button color="primary">Add Employee</button>
+            <button (click)="AddEditDialog('add', '')" mat-stroked-button color="primary">Add Employee</button>
         </div>
         <div class="employee-search">
             <input
@@ -45,7 +45,7 @@
               <td (click)="employeeDetail(employee.id)">{{employee.employee_age}}</td>
               <td class="hover-block">
                 <span style="margin-left: auto;">
-                  <mat-icon class="edit-img-icon" (click)="editDialog(employee)">edit</mat-icon>
+                  <mat-icon class="edit-img-icon" (click)="AddEditDialog('edit',employee)">edit</mat-icon>
                   <mat-icon class="edit-img-icon" style="margin-left: 10px" (click)="deleteDialog(employee.id)">delete</mat-icon>
               </span>
               </td>

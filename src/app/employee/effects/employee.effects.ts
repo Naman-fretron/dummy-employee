@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, merge, mergeMap, Observable, of } from "rxjs";
-import { addEmployee, addEmployeeSuccess, deleteEmployee, deleteEmployeeSuccess, loadEmployee, loadEmployeeSuccess, setError, updateEmployee, updateEmployeeSuccess } from "../actions/employee.action";
+import { catchError, map, merge, mergeMap, Observable, of, switchMap } from "rxjs";
+import { addEmployee, addEmployeeSuccess, deleteEmployee, deleteEmployeeSuccess, loadEmployee, loadEmployeeSuccess, searchAction, searchActionSuccess, setError, updateEmployee, updateEmployeeSuccess } from "../actions/employee.action";
 import { EmployeeService } from "../services/employee.service";
 
 @Injectable({
@@ -80,6 +80,19 @@ deleteEmployee$ = createEffect( () => {
         }),
         catchError((error) => {
           return of(setError({message :error.error.message}))
+        })
+      )
+    })
+  )
+})
+
+searchAction$ = createEffect(() => {
+  return this.action$.pipe(
+    ofType(searchAction),
+    switchMap((action) => {
+      return this.http.filterEmploye(action.value).pipe(
+        map((data) => {
+          return searchActionSuccess({employee: data})
         })
       )
     })
